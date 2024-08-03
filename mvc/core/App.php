@@ -14,6 +14,8 @@ class App {
             if (file_exists("./mvc/controllers/" . $controllerName . ".php")) {
                 $this->controller = $controllerName;
                 unset($arr[0]);
+            } else {
+                $this->controller = 'NotFound';
             }
         }
         require_once "./mvc/controllers/" . $this->controller . ".php";

@@ -2,19 +2,19 @@
     <div class="container-login100" style="background: #7fad39">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
-                <a href="../index.php">
-                    <img src="../img/logo.png" alt="IMG">
+                <a href="<?php echo BASE_URL; ?>/Login">
+                    <img src="<?php echo BASE_URL; ?>/public/img/logo.png" alt="IMG">
                 </a>
             </div>
 
-            <form class="login100-form validate-form" method="post">
+            <form action="<?php echo BASE_URL; ?>/Login/HandelLogin" class="login100-form validate-form" method="post">
                 <span class="login100-form-title">
                     Đăng nhập
                 </span>
 
                 <div class="wrap-input100 ">
-                    <input class="input100" type="text" name="user" value="<?php echo $hoTenDefault; ?>"
-                        placeholder="Số điện thoại">
+                    <input class="input100" type="text" name="email"
+                        value="<?php echo isset($data['data'][0]) ? $data['data'][0] : '' ?>" placeholder="Email">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-phone" aria-hidden="true"></i>
@@ -22,31 +22,26 @@
                 </div>
 
                 <div class="wrap-input100 ">
-                    <input class="input100" type="password" name="pass" value="<?php echo $soDienThoaiDefault; ?>"
-                        placeholder="Mật khẩu">
+                    <input class="input100" type="password" name="password"
+                        value="<?php echo isset($data['data'][1]) ? $data['data'][1] : '' ?>" placeholder="Mật khẩu">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
-                <?php
-                    if (isset($txt) && ($txt != "")) {
-                        echo "<div style='color: red; text-align: center;'>$txt</div>";
-                    }
-                    ?>
                 <div class="container-login100-form-btn">
-                    <input type="submit" style="background: #7fad39" class=" login100-form-btn" name="submit"
+                    <input type="submit" style="background: #7fad39" class=" login100-form-btn" name="btnLogin"
                         value="Đăng nhập">
                 </div>
 
                 <div class="text-center p-t-12">
-                    <a class="txt2" href="./quenmatkhau.php">
+                    <a class="txt2" href="<?php echo BASE_URL; ?>/Reset">
                         Quên mật khẩu
                     </a>
                 </div>
 
                 <div class="text-center p-t-12">
-                    <a class="txt2" href="../view/logincode.php">
+                    <a class="txt2" href="<?php echo BASE_URL; ?>/Register">
                         Bạn chưa có tài khoản? Đăng ký tại đây
                         <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                     </a>

@@ -1,39 +1,112 @@
 <?php
-    class Register extends Controller{
-        public $UserModel;
-        
-        public $layout = "auth_layout";
-        public $page = "register";
-        public $title = "Sign up";
+class Register extends Controller
+{
+    public $UserModel;
 
-        public function __construct(){
-            $this -> UserModel = $this -> model("User");
-        }
+    public $layout = "auth_layout";
+    public $title = "Đăng ký";
 
-        function Index(){
-            $this -> response($this -> layout, $this->page, $this->statusOK, "", $this -> title);
-        }
+    public $ctr = "Register";
 
-        function HandelRegister(){
-            if (isset($_POST["btnRegister"])){
-                $name = addslashes($_POST["full_name"]);
-                $phone = addslashes($_POST["phone_number"]);
-                $email = addslashes($_POST["email"]);
-                $password = addslashes($_POST["password"]);
-                $retypePassword = addslashes($_POST["retype_password"]);
-                if ($password != $retypePassword) {
-                    $this -> response($this -> layout, $this -> page, $this -> statusFail, "password and retype password do not matching", $this -> title);
-                }
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    public function __construct()
+    {
+        $this->UserModel = $this->model("User");
+    }
 
-                $result = $this -> UserModel -> CreateUser();
+    function Index()
+    {
+        // $this->response($this->layout, "send_code", $this->title, "");
+        $this->view($this->layout, [
+            "Page" => "send_code",
+            "title" => $this->title,
+            "controller" => $this->ctr
+        ]);
+    }
 
-                if ($result){
-                    $this -> response($this -> layout, $this->page, $this->statusOK, "User was registered successfully", $this -> title);
-                } else {
-                    $this -> response($this->layout, $this->page, $this->statusFail, "Fail to register", $this->title);
-                }
+    function SendCode()
+    {
+        if (isset($_POST["btnSendCode"])) {
+            $email = $_POST["email"];
+
+            if (!validateEmail($email)) {
+                echo "<script>alert('Email không hợp lệ!'); history.back();</script>";
+                return;
+            }
+
+            if (sendCode($email)) {
+                // $this->response($this->layout, "verify_code", $this->title, $email);
+                $this->view($this->layout, [
+                    "Page" => "verify_code",
+                    "title" => $this->title,
+                    "data" => $email,
+                    "controller" => $this->ctr
+                ]);
             }
         }
     }
+    function VerifyCode()
+    {
+        if (isset($_POST["btnVerifyCode"])) {
+            $email = $_POST["email"];
+            $code = $_POST["code"];
+
+            if (!verifyCode($code)) {
+                echo "<script>alert('Mã xác minh không chính xác!');</script>";
+                // $this->response($this->layout, "verify_code", $this->title, $email);
+                $this->view($this->layout, [
+                    "Page" => "verify_code",
+                    "title" => $this->title,
+                    "data" => $email,
+                    "controller" => $this->ctr
+                ]);
+                return;
+            }
+
+            $this->response($this->layout, "register", $this->title, $email);
+        }
+    }
+
+    function HandelRegister()
+    {
+        if (isset($_POST["btnRegister"])) {
+            $full_name = $_POST["full_name"];
+            $phone_number = $_POST["phone_number"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $retypePassword = $_POST["retype_password"];
+
+            $errors = validateForm(["full_name", "phone_number", "password"]);
+            if (!empty($errors)) {
+                echo "<script>alert('Error: " . implode(", ", $errors) . "');</script>";
+                $this->view($this->layout, [
+                    "Page" => "register",
+                    "title" => $this->title,
+                    "data" => $email
+                ]);
+                return;
+            }
+
+
+            if ($password != $retypePassword) {
+                echo "<script>alert('Password and retype password do not matching');</script>";
+                $this->view($this->layout, [
+                    "Page" => "register",
+                ]);
+                return;
+            }
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $result = $this->UserModel->CreateUser($full_name, $phone_number, $email, $hashedPassword);
+            if ($result) {
+                $this->response($this->layout, "login", $this->title, [$email, $password]);
+            } else {
+                echo "<script>alert('Fail to register');</script>";
+                $this->view($this->layout, [
+                    "Page" => "register",
+                ]);
+                return;
+            }
+        }
+    }
+}
 ?>
