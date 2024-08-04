@@ -5,13 +5,13 @@
                 <img src="<?php echo BASE_URL; ?>/public/img/logo.png" alt="IMG">
             </div>
 
-            <form action="<?php echo BASE_URL; ?>/<?php echo $data["controller"] ?>/VerifyCode"
+            <form action="<?php echo BASE_URL; ?>/<?php echo $controller ?>/VerifyCode"
                 class="login100-form validate-form" method="post">
                 <span class="login100-form-title1">
-                    <?php echo $data["title"] ?>
+                    <?php echo $title ?>
                 </span>
                 <input hidden type="text" name="email" placeholder="Email"
-                    value="<?php echo htmlspecialchars($data["data"]) ?> ">
+                    value="<?php echo htmlspecialchars($data) ?> ">
                 <div class="wrap-input100 ">
                     <input class="input100" type="text" name="code" placeholder="Nhập mã xác minh">
                     <span class="focus-input100"></span>

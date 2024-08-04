@@ -10,6 +10,7 @@ class Controller
 
      protected function view($view, $data = [])
      {
+          extract($data);
           require_once "./mvc/views/" . $view . ".php";
      }
 

@@ -14,13 +14,13 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/public/vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/public/css/util.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/public/css/main_long.css">
-    <title><?php echo $data["title"] ?></title>
+    <title><?php echo $title ?></title>
 </head>
 
 <body>
     <?php
-            require_once "./mvc/views/pages/".$data["Page"].".php";
-        ?>
+    require_once "./mvc/views/pages/" . $Page . ".php";
+    ?>
 </body>
 <script src="<?php echo BASE_URL; ?>/public/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/public/vendor/bootstrap/js/popper.js"></script>
@@ -28,9 +28,9 @@
 <script src="<?php echo BASE_URL; ?>/public/vendor/select2/select2.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/public/vendor/tilt/tilt.jquery.min.js"></script>
 <script>
-$('.js-tilt').tilt({
-    scale: 1.1
-})
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
 </script>
 
 </body>

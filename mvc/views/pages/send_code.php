@@ -5,10 +5,10 @@
                 <img src="<?php echo BASE_URL; ?>/public/img/logo.png" alt="IMG">
             </div>
 
-            <form action="<?php echo BASE_URL; ?>/<?php echo $data["controller"] ?>/SendCode"
+            <form action="<?php echo BASE_URL; ?>/<?php echo $controller ?>/SendCode"
                 class="login100-form validate-form" method="post">
                 <span class="login100-form-title1">
-                    <?php echo $data["title"] ?>
+                    <?php echo $title ?>
                 </span>
 
                 <div class="wrap-input100 ">

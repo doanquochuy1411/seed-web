@@ -98,6 +98,11 @@ class Register extends Controller
 
             $result = $this->UserModel->CreateUser($full_name, $phone_number, $email, $hashedPassword);
             if ($result) {
+                $userAccount = $this->UserModel->GetUserByEmail($email);
+                $this->UserModel->SetRole($userAccount["id"], "2");
+                // 1: admin
+                // 2: customer
+                // 3: employee
                 $this->response($this->layout, "login", $this->title, [$email, $password]);
             } else {
                 echo "<script>alert('Fail to register');</script>";

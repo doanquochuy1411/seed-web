@@ -40,7 +40,8 @@ class Login extends Controller
                 $this->UserModel->ResetLoginAttempts($email);
                 $_SESSION['_token'] = bin2hex(openssl_random_pseudo_bytes(16));
                 $_SESSION['UserID'] = $userAccount["id"];
-                $this->response("main_layout", "home", "Trang chủ", $userAccount);
+                header("Location: " . BASE_URL);
+                exit();
             } else {
                 if ($userAccount) {
                     $this->UserModel->UpdateLoginAttempts($email);

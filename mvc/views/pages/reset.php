@@ -7,11 +7,11 @@
 
             <form action="<?php echo BASE_URL; ?>/Reset/HandelReset" class="login100-form validate-form" method="post">
                 <span class="login100-form-title">
-                    <?php echo $data["title"] ?>
+                    <?php echo $title ?>
                 </span>
 
                 <input hidden type="text" name="email" placeholder="Email"
-                    value="<?php echo htmlspecialchars($data["data"]) ?> ">
+                    value="<?php echo htmlspecialchars($data) ?> ">
 
                 <div class="wrap-input100 ">
                     <input class="input100" type="password" name="password" placeholder="Mật khẩu mới">

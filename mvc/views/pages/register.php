@@ -12,7 +12,7 @@
                 </span>
 
                 <input hidden type="text" name="email" placeholder="Email"
-                    value="<?php echo htmlspecialchars($data["data"]) ?> ">
+                    value="<?php echo htmlspecialchars($data) ?> ">
 
                 <div class="wrap-input100 ">
                     <input class="input100" type="text" name="full_name" placeholder="Họ tên">

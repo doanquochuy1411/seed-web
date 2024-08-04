@@ -73,9 +73,9 @@ class DB
         }
 
         $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
+        // $data = $result->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
-        return $data;
+        return $result;
     }
 }
 
