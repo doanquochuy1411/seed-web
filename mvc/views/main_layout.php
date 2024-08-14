@@ -95,7 +95,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="<?php echo BASE_URL; ?>">Trang chủ</a></li>
-                            <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/shop-grid">Cửa hàng</a></li>
+                            <li><a href="<?php echo BASE_URL; ?>/Shop">Cửa hàng</a></li>
                             <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/blog">Blog</a></li>
                             <li><a href="#">Thông tin</a>
                                 <ul class="header__menu__dropdown">
@@ -258,7 +258,7 @@
                             <p>
                                 &copy;
                                 <script>
-                                    document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                                 </script> Bản quyền © | Website được cung cấp bởi <i class="fa fa-seedling"
                                     aria-hidden="true"></i>
                                 <a href="https://yourwebsite.com" target="_blank">Công Ty Hạt Giống</a>.

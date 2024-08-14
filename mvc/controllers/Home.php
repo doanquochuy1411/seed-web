@@ -177,32 +177,5 @@ class Home extends Controller
         header("Location: " . BASE_URL);
         exit();
     }
-    // function Redirect($param)
-    // {
-    //     switch ($param) {
-    //         case 'Contact':
-    //             $this->view($this->layout, [
-    //                 "Page" => "home",
-    //                 "title" => $this->title,
-    //                 "amount_cart" => $count,
-    //                 "total" => $total,
-    //                 "user_name" => $userName,
-    //                 "category_list" => $categories,
-    //                 "category_feature_list" => $category_feature_list,
-    //                 "product_list" => $product_list,
-    //             ]);
-    //             break;
-    //         case 'About':
-    //             header('Location: ' . BASE_URL . '/about');
-    //             break;
-    //         case 'Products':
-    //             header('Location: ' . BASE_URL . '/products');
-    //             break;
-    //         default:
-    //             header('Location: ' . BASE_URL);
-    //             break;
-    //     }
-    //     exit();
-    // }
 }
 ?>
