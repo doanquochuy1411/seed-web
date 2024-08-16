@@ -147,12 +147,8 @@
                             </div>
                             <ul>
                                 <?php
-                                if ($category_list && $category_list->num_rows > 0) {
-                                    while ($row = mysqli_fetch_assoc($category_list)) {
-                                        echo "<li><a href='#'>" . $row["name"] . "</a></li>";
-                                    }
-                                } else {
-                                    echo "<li><a href='#'>Không tìm thấy danh mục</a></li>";
+                                foreach ($category_list as $category) {
+                                    echo "<li><a href='" . BASE_URL . '/Shop/Categories/' . $category["id"] . "'>" . $category["name"] . "</a></li>";
                                 }
                                 ?>
                             </ul>
@@ -161,9 +157,11 @@
                     <div class="col-lg-9">
                         <div class="hero__search">
                             <div class="hero__search__form">
-                                <form action="#">
-                                    <input type="text" placeholder="Bạn cần tìm hạt giống gì?">
-                                    <button type="submit" class="site-btn">TÌM KIẾM</button>
+                                <form action="<?php echo BASE_URL . '/Shop/HandleSearchProducts' ?>" method="post"
+                                    onsubmit="return validateForm()">
+                                    <input type="text" id="product_name" name="product_name"
+                                        placeholder="Bạn cần tìm hạt giống gì?">
+                                    <button type="submit" name="btnSearch" class="site-btn">TÌM KIẾM</button>
                                 </form>
                             </div>
                             <div class="hero__search__phone">
@@ -290,9 +288,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- Load page -->
-    <!-- <script src="<?php echo BASE_URL; ?>/public/js/load_page.js"></script> -->
+    <script type="text/javascript">
+    function validateForm() {
+        var productName = document.getElementById("product_name").value.trim();
+        if (productName === "") {
+            alert("Vui lòng nhập tên sản phẩm cần tìm!");
+            return false;
+        }
+        return true;
+    }
+    </script>
 </body>
 
 </html>
