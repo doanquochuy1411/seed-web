@@ -67,7 +67,7 @@
             </ul>
         </div>
         <div class="featured__item__text">
-            <h6><a href="#">' . $product["name"] . '</a></h6>
+            <h6><a href="' . BASE_URL . '/Shop/Products/' . $product["id"] . '">' . $product["name"] . '</a></h6>
             <h5>' . number_format($product['sale_price'], 0, '', '.') . 'đ</h5>
         </div>
     </div>

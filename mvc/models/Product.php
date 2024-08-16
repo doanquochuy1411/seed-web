@@ -13,6 +13,12 @@ class Product extends DB
         return $this->executeSelectQuery($sql, [$category_id]);
     }
 
+    public function GetProductListByCategoryWithLimit($category_id, $limit)
+    {
+        $sql = "SELECT p.*, c.name AS category_name FROM product p JOIN category c ON p.category_id = c.id WHERE p.deleted_at IS NULL and p.category_id = ? order by id desc limit ?";
+        return $this->executeSelectQuery($sql, [$category_id, $limit]);
+    }
+
     public function GetProductListAtLeast($amount)
     {
         $sql = "SELECT p.*, c.name AS category_name FROM product p JOIN category c ON p.category_id = c.id WHERE p.deleted_at IS NULL order by id desc limit ?";

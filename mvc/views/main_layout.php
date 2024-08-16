@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/review.css" type="text/css">
     <!-- Dropdown menu -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/drop-down.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -256,7 +257,7 @@
                             <p>
                                 &copy;
                                 <script>
-                                document.write(new Date().getFullYear());
+                                    document.write(new Date().getFullYear());
                                 </script> Bản quyền © | Website được cung cấp bởi <i class="fa fa-seedling"
                                     aria-hidden="true"></i>
                                 <a href="https://yourwebsite.com" target="_blank">Công Ty Hạt Giống</a>.
@@ -289,14 +290,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    function validateForm() {
-        var productName = document.getElementById("product_name").value.trim();
-        if (productName === "") {
-            alert("Vui lòng nhập tên sản phẩm cần tìm!");
-            return false;
+        function validateForm() {
+            var productName = document.getElementById("product_name").value.trim();
+            if (productName === "") {
+                alert("Vui lòng nhập tên sản phẩm cần tìm!");
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
     </script>
 </body>
 
