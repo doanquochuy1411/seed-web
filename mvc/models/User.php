@@ -6,6 +6,11 @@ class User extends DB
         $sql = "SELECT * FROM user Where deleted_at is null";
         return $this->executeSelectQuery($sql);
     }
+    public function GetUserByID($userID)
+    {
+        $sql = "SELECT * FROM user Where deleted_at is null and id = ?";
+        return $this->executeSelectQuery($sql, [$userID]);
+    }
 
     public function GetCartDetailByUserID($id)
     {

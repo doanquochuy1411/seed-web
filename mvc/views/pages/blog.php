@@ -6,7 +6,7 @@
                 <div class="breadcrumb__text">
                     <h2>Blog</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Ogani</a>
+                        <a href="<?php echo BASE_URL ?>">Trang chủ</a>
                         <span>Blog</span>
                     </div>
                 </div>

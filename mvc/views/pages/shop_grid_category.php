@@ -88,7 +88,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort section-title product__discount__title">
-                                <h2><b><?php echo isset($product_list[0]['category_name'])?$product_list[0]['category_name']:"" ?></b>
+                                <h2><b><?php echo isset($product_list[0]['category_name']) ? $product_list[0]['category_name'] : "" ?></b>
                                 </h2>
                             </div>
                         </div>
@@ -114,10 +114,8 @@
                                 <div class="product__item__pic set-bg"
                                     data-setbg="' . BASE_URL . '/public/img/product/product-1.jpg">
                         <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
+                            <li><a href="' . BASE_URL . '/Cart/AddToCart/' . $product["id"] . '/1"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="' . BASE_URL . '/Shop/Products/' . $product["id"] . '">' . $product['name'] . '</a></h6>
@@ -146,9 +144,7 @@
                                             data-setbg="' . BASE_URL . '/public/img/product/discount/pd-2.jpg">
                                 <div class="product__discount__percent">-20%</div>
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="' . BASE_URL . '/Cart/AddToCart/' . $product["id"] . '/1"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__discount__item__text">

@@ -71,11 +71,16 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" value="1">
+                                <input type="text" value="1" class="quantity-input">
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
+                    <a href="#" data-product-id="<?php echo $product[0]["id"]; ?>" class="add-to-cart primary-btn">Thêm
+                        vào giỏ
+                        hàng</a>
+                    <br> <br><span class="stock-product-quantity"> Kho:
+                        <?php echo $product[0]["stock_quantity"] ?>
+                    </span>
                     <ul>
                         <li><b>Kho</b> <span><?php echo $product[0]['stock_quantity'] ?> Sản phẩm</span></li>
                         <li><b>Giao hàng</b> <span>Trong vòng 3 ngày. </span>
@@ -187,10 +192,8 @@
                             <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="' . BASE_URL . '/public/img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
+                <li><a href="' . BASE_URL . '/Cart/AddToCart/' . $re_product["id"] . '/1"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
                         </div>
                         <div class="product__item__text">
                             <h6><a href="' . BASE_URL . '/Shop/Products/' . $re_product["id"] . '">' . $re_product['name'] . '</a></h6>

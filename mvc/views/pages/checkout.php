@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Checkout</h2>
+                    <h2>Thanh toán</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>Checkout</span>
+                        <a href="<?php echo BASE_URL ?>">Trang chủ</a>
+                        <span>Thanh toán</span>
                     </div>
                 </div>
             </div>
@@ -19,126 +19,68 @@
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                </h6>
-            </div>
-        </div>
         <div class="checkout__form">
-            <h4>Billing Details</h4>
+            <h4>Thông tin thanh toán</h4>
             <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="checkout__input">
-                                    <p>Fist Name<span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Last Name<span>*</span></p>
-                                    <input type="text">
+                                    <p>Họ tên<span>*</span></p>
+                                    <input type="text" placeholder="Họ tên" value="<?php echo $user_name ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
-                            <p>Country<span>*</span></p>
-                            <input type="text">
+                            <p>Số điện thoại<span>*</span></p>
+                            <input type="text" placeholder="Số điện thoại" value="<?php echo $phone_number ?>">
                         </div>
                         <div class="checkout__input">
-                            <p>Address<span>*</span></p>
-                            <input type="text" placeholder="Street Address" class="checkout__input__add">
-                            <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                            <p>Địa chỉ<span>*</span></p>
+                            <input type="text" placeholder="Địa chỉ" value="<?php echo $address ?>">
                         </div>
                         <div class="checkout__input">
-                            <p>Town/City<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Country/State<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Postcode / ZIP<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Phone<span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
+                            <p>Ghi chú<span>*</span></p>
+                            <input type="text" placeholder="Ghi chú cho đơn hàng của bạn">
                         </div>
                         <div class="checkout__input__checkbox">
                             <label for="acc">
-                                Create an account?
+                                Bạn đồng ý với các điều khoản của chúng tôi ?
                                 <input type="checkbox" id="acc">
                                 <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <p>Create an account by entering the information below. If you are a returning customer
-                            please login at the top of the page</p>
-                        <div class="checkout__input">
-                            <p>Account Password<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input__checkbox">
-                            <label for="diff-acc">
-                                Ship to a different address?
-                                <input type="checkbox" id="diff-acc">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Order notes<span>*</span></p>
-                            <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
+                            </label> <br>
+                            <small id="DieuKhoan-mess"></small>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            <h4>Your Order</h4>
-                            <div class="checkout__order__products">Products <span>Total</span></div>
+                            <h4>Hóa đơn</h4>
+                            <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
                             <ul>
-                                <li>Vegetable’s Package <span>$75.99</span></li>
-                                <li>Fresh Vegetable <span>$151.99</span></li>
-                                <li>Organic Bananas <span>$53.99</span></li>
+                                <?php
+                                $total = 0;
+                                if (!empty($product_list)) {
+                                    foreach ($product_list as $product) {
+                                        echo '<li>' . $product["product_name"] . '<span>' . number_format($product['sale_price'] * $product['quantity'], 0, '', '.') . 'đ</span></li>';
+                                        $total += ($product['sale_price'] * $product['quantity']);
+                                    }
+                                }
+                                ?>
                             </ul>
-                            <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                            <div class="checkout__order__total">Total <span>$750.99</span></div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc-or">
-                                    Create an account?
-                                    <input type="checkbox" id="acc-or">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <div class="checkout__order__total">Tổng tiền
+                                <span><?php echo number_format($total, 0, '', '.') ?>đ</span></div>
+
+                            <p>Vui lòng chọn phương thức thanh toán.</p>
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
-                                    Check Payment
+                                    Thanh toán khi nhận hàng
                                     <input type="checkbox" id="payment">
-                                    <span class="checkmark"></span>
+                                    <span class="checkmark"></span> <br>
+                                    <small id="PhuongThucThanhToan-mess"></small>
                                 </label>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="paypal">
-                                    Paypal
-                                    <input type="checkbox" id="paypal">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <button type="submit" class="site-btn">PLACE ORDER</button>
+                            <button type="submit" class="site-btn">THANH TOÁN</button>
                         </div>
                     </div>
                 </div>

@@ -37,5 +37,11 @@ class Product extends DB
         return $this->executeSelectQuery($sql, [$name]);
     }
 
+    public function GetProductInCart($userID)
+    {
+        $sql = "SELECT c.*, p.name as product_name, p.image_url, p.sale_price, p.stock_quantity from cart c JOIN product p on p.id = c.product_id where c.user_id = ?";
+        return $this->executeSelectQuery($sql, [$userID]);
+    }
+
 }
 ?>

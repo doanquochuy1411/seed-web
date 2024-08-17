@@ -100,10 +100,10 @@
                             <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/blog">Blog</a></li>
                             <li><a href="#">Thông tin</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/shoping-cart">Giỏ hàng</a></li>
+                                    <li><a href="<?php echo BASE_URL; ?>/Cart">Giỏ hàng</a></li>
                                     <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/blog-details">Chi tiết Blog</a>
                                     </li>
-                                    <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/checkout">Thanh toán</a></li>
+                                    <li><a href="<?php echo BASE_URL; ?>/Checkout">Thanh toán</a></li>
                                     <li><a href="<?php echo BASE_URL; ?>/Home/Redirect/contact">Liên hệ</a></li>
                                 </ul>
                             </li>
@@ -113,7 +113,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>
+                            <li><a href="<?php echo BASE_URL ?>/Cart"><i class="fa fa-shopping-bag"></i> <span>
                                         <?php
                                         echo $amount_cart
                                             ?>
@@ -121,7 +121,7 @@
                         </ul>
                         <div class="header__cart__price">Tổng tiền: <span>
                                 <?php
-                                echo $total
+                                echo number_format($total, 0, '', '.')
                                     ?>
                                 đ</span></div>
                     </div>
@@ -284,6 +284,7 @@
     <script src="<?php echo BASE_URL; ?>/public/js/mixitup.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/public/js/owl.carousel.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/public/js/main.js"></script>
+    <script src="<?php echo BASE_URL; ?>/public/js/cart.js"></script>
 
     <!-- Dropdown menu -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -299,6 +300,31 @@
             return true;
         }
     </script>
+
+    <!-- Handel Add to Cart -->
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                // Ngăn chặn hành vi mặc định của link
+
+                const quantityInput = document.querySelector(
+                    ".product__details__quantity .quantity .pro-qty .quantity-input");
+                const quantity = quantityInput.value;
+                console.log("quantity: " + quantity);
+
+                // Cập nhật URL
+                button.href =
+                    `<?php echo BASE_URL; ?>/Cart/AddToCart/${button.dataset.productId}/${quantity}`;
+
+                // Bây giờ bạn có thể cho phép chuyển hướng
+                window.location.href = button.href;
+            });
+        });
+    </script>
+
 </body>
 
 </html>
